@@ -5,7 +5,7 @@ import setupPolicies from "../middlawares/setupPolicies.mid.js";
 class CustomRouter {
     constructor() {
         this.router = Router();
-        this.router.use(setupResponses);
+        this.use(setupResponses);
     }
 
     getRoutes = () => this.router;

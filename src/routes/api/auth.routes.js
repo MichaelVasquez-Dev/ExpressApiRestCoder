@@ -3,6 +3,7 @@ import passport from "../../middlawares/passport.mid.js"
 import { failedRedirect, google, login, online, register, signout } from "../../controllers/auth.controller.js";
 import passportCB from "../../middlawares/passportCB.mid.js";
 import CustomRouter from "../custom.routes.js";
+import constants from "../../constants/constants.js";
 
 const router = Router();
 
@@ -32,13 +33,13 @@ class AuthRouter extends CustomRouter{
     }
 
     init = () => {
-        this.create("/register", passportCB("register"), register);
-        this.create("/login", passportCB('login'), login);
-        this.create("/signout", passportCB("jwt"), signout);
-        this.read("/online", passportCB("jwt"), online);
+        this.create("/register", [constants.ROL_PUBLIC], passportCB("register"), register);
+        this.create("/login", [constants.ROL_PUBLIC], passportCB('login'), login);
+        this.create("/signout", [constants.ROL_USER], signout);
+        this.read("/online", [constants.ROL_USER], online);
 
-        this.read("/google", passport.authenticate("google", { scope: [ "email", "profile" ], failureRedirect: '/api/auth/failedRedirect' }));
-        this.read("/google/callback", passport.authenticate("google", { session: false, failureRedirect: '/api/auth/failedRedirect'}), google);
+        this.read("/google", [constants.ROL_PUBLIC], passport.authenticate("google", { scope: [ "email", "profile" ], failureRedirect: '/api/auth/failedRedirect' }));
+        this.read("/google/callback", [constants.ROL_PUBLIC], passport.authenticate("google", { session: false, failureRedirect: '/api/auth/failedRedirect'}), google);
         
         this.read("/failedRedirect", failedRedirect)
     }

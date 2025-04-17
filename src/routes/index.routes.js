@@ -9,8 +9,8 @@ class Routes extends CustomRouter {
     }
 
     init() {
-        this.use("/", [], viewsRouter);
-        this.use("/api", [], apiRouter);
+        this.use("/", viewsRouter);
+        this.use("/api", apiRouter);
     }
 }
 

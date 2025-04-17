@@ -19,7 +19,7 @@ passport.use("register", new LocalStrategy(
         
         const user = { first_name, last_name, date, email, password: createHash(password), isGoogleUser: false };
         const newUser = await usersManager.create(user);
-        req.token = createToken({ id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
+        req.token = createToken({ _id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
         done(null, newUser, null); 
     }
 ));
@@ -32,7 +32,7 @@ passport.use("login", new LocalStrategy(
     async (req, email, password, done) => {
         const user = await usersManager.readBy({ email, isGoogleUser: false });
         if (!user || !isValidPassword(user, password)) return done(null, null, { message: "Email o Contraseña incorrectos", statusCode: 401 });
-        req.token = createToken({ id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
+        req.token = createToken({ _id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
         done(null, user, null);
     }
 ));

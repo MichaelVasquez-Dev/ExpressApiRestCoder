@@ -4,12 +4,8 @@ import { productsManager } from "../data/mongo/manager.mongo.js";
 const createOne = async (req, res) => {
     const {title, description, category, image, price, stock, onsale } = req.body;
 
-    if( !title || !description ) {
-        const error = new Error("Missing required fields");
-        error.status = 400;
-        return next(error);
-    }
-
+    if( !title || !description ) res.json400("Missing required fields");
+    
     const product = await productsManager.create({
         title,
         description,
@@ -30,8 +26,8 @@ const readAll = async (req, res) => {
 };
 
 const readOne = async (req, res) => {
-    const { id } = req.params;
-    const product = await productsManager.readById(id);
+    const { pid } = req.params;
+    const product = await productsManager.readById(pid);
     res.json200( product, "Product retrieved successfully" );
 };
 
