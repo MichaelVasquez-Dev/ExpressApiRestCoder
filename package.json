@@ -5,9 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "test": "node src/app.js --mode test",
+    "start": "node src/app.js --mode prod",
+    "dev": "nodemon src/app.js --mode dev"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/MichaelVasquez-Dev/ExpressApiRestCoder#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "commander": "^13.1.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",

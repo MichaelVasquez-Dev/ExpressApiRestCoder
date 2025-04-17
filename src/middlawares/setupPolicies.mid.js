@@ -3,6 +3,7 @@ import { verifyToken } from "../helpers/token.helper.js";
 const setupPolicies = (policies) => {
     return (req, res, next) => {
         try {
+            console.log("TOKENNNNNNNNNNNNN",token);
             if(policies.inclides("PUBLIC")) return next();
 
             const token = req?.cookies?.token

@@ -1,4 +1,5 @@
-import "dotenv/config.js";
+// import "dotenv/config.js"; // se reemplaza por el setenv
+import "./helpers/setEnv.helper.js"
 import express from "express";
 import morgan from "morgan";
 import { engine } from "express-handlebars";
@@ -8,9 +9,10 @@ import dbConnect from "./helpers/dbConnect.helper.js";
 import routes from "./routes/index.routes.js";
 import errorHandler from "./middlawares/errorHandler.mid.js";
 import pathHandler from "./middlawares/pathHandler.mid.js";
+import setArgsHelper from "./helpers/setArgs.helper.js";
 
 const server = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 server.use(express.static(__dirname + "/public"));
 
@@ -30,4 +32,5 @@ server.use(pathHandler);
 server.listen(PORT, async () => {
   await dbConnect();
   console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`On mode: ${setArgsHelper.mode}`);
 });

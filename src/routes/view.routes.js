@@ -8,8 +8,8 @@ class ViewsRouter extends CustomRouter {
     }
 
     init(){
-        this.read("/login", login);
-        this.read("/register", register);
+        this.read("/login", [], login);
+        this.read("/register", [], register);
     }
 }
 
