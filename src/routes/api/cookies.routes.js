@@ -6,7 +6,13 @@ const setCookie = (req, res, next) => {
     try {
         const maxAge = 1000 * 60 * 60 * 24;
         const message = "cookie Seted";
-        res.cookie("user_id", "asdf323fa3f2fds1d1d1", { maxAge, signed: true })
+        res.cookie("user_id", "asdf323fa3f2fds1d1d1", { 
+            httpOnly: true,
+            secure: false, // true si es https
+            sameSite: "strict", // none, lax, strict
+            maxAge, 
+            signed: true 
+        })
         .cookie("modo", "oscuro", { maxAge })
 
         .json({ message });

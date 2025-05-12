@@ -3,8 +3,9 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import { createHash, isValidPassword } from "../helpers/hash.helper.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";
+import { usersManager } from "../data/dao.factory.js";
 import { createToken } from "../helpers/token.helper.js";
+import UserDTO from "../dto/users.dto.js";
 
 passport.use("register", new LocalStrategy(
     {
@@ -17,8 +18,9 @@ passport.use("register", new LocalStrategy(
         if (!first_name || !last_name || !date) return done(null, null, { message: "Faltan datos", statusCode: 400 });
         if (await usersManager.readBy({ email })) return done(null, null, { message: "El usuario ya existe", statusCode: 400 });
         
-        const user = { first_name, last_name, date, email, password: createHash(password), isGoogleUser: false };
-        const newUser = await usersManager.create(user);
+        const user = { first_name, last_name, date, email, password };
+        const data = new UserDTO(user);
+        const newUser = await usersManager.create(data);
         req.token = createToken({ _id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
         done(null, newUser, null); 
     }

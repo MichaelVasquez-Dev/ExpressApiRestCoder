@@ -1,4 +1,3 @@
-import Cart from "./models/carts.model.js"
 import Product from "./models/products.model.js"
 import User from "./models/users.model.js"
 
@@ -18,6 +17,5 @@ class Manager {
 export default Manager
 
 const usersManager = new Manager(User)
-const cartsManager = new Manager(Cart)
 const productsManager = new Manager(Product)
-export { usersManager, cartsManager, productsManager }
+export { usersManager, productsManager }

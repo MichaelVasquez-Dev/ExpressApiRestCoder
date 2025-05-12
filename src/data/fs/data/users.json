@@ -1,0 +1,38 @@
+[
+  {
+    "first_name": "Michael",
+    "last_name": "Vasquez",
+    "date": "1996-05-19",
+    "email": "michael@gmail.com",
+    "password": "$2b$10$8PeGBguUMIkupMyoTPXhV.y.RivHnIJMtMmE7U87QQxXYHwG9.GTG",
+    "isGoogleUser": false
+  },
+  {
+    "_id": "e3eb492e6897a6f7653111d3",
+    "createdAt": "2025-05-12T21:37:45.569Z",
+    "updatedAt": "2025-05-12T21:37:45.569Z",
+    "first_name": "Michael",
+    "last_name": "Vasquez",
+    "date": "1996-05-19",
+    "email": "michaell@gmail.com",
+    "password": "$2b$10$bs7vawPtjLO1aZgW1VppoO.nuGWdgp8LUEtNRdT2xTkhoXaKvvFze",
+    "role": "USER",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png",
+    "isGoogleUser": false,
+    "active": true
+  },
+  {
+    "_id": "f93a2aecdaa07d62798836bb",
+    "createdAt": "2025-05-12T21:45:26.052Z",
+    "updatedAt": "2025-05-12T21:45:26.052Z",
+    "first_name": "Michael",
+    "last_name": "Vasquez",
+    "date": "1996-05-19",
+    "email": "michaelll@gmail.com",
+    "password": "$2b$10$gzaaRT7SbIdK7bvED271BOElmihJWHY1LURcpEMqGF95GjlVGbTg.",
+    "role": "USER",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png",
+    "isGoogleUser": false,
+    "active": true
+  }
+]

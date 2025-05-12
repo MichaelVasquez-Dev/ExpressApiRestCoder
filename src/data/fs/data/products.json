@@ -1,0 +1,44 @@
+[
+  {
+    "id": "6d1b1c31a0cfd33582d35c86",
+    "createdAt": "2025-05-12T21:28:33.220Z",
+    "updatedAt": "2025-05-12T21:28:33.220Z",
+    "title": "Prueba",
+    "description": "esto es una prueba",
+    "category": "Laptop",
+    "image": "https://i.blogs.es/966d16/portada/1366_2000.png",
+    "price": 10,
+    "stock": 0,
+    "onsale": false,
+    "owner_id": "68016f44eca030fa3c2c3eda",
+    "active": true
+  },
+  {
+    "id": "cb517a1aaa85e4e479fd030b",
+    "createdAt": "2025-05-12T21:28:36.903Z",
+    "updatedAt": "2025-05-12T21:28:36.903Z",
+    "title": "Prueba",
+    "description": "esto es una prueba",
+    "category": "Laptop",
+    "image": "https://i.blogs.es/966d16/portada/1366_2000.png",
+    "price": 10,
+    "stock": 0,
+    "onsale": false,
+    "owner_id": "68016f44eca030fa3c2c3eda",
+    "active": true
+  },
+  {
+    "id": "b1a2c92d2a64bfb8fa5b0fdf",
+    "createdAt": "2025-05-12T21:28:40.354Z",
+    "updatedAt": "2025-05-12T21:28:40.354Z",
+    "title": "Prueba",
+    "description": "esto es una prueba",
+    "category": "Laptop",
+    "image": "https://i.blogs.es/966d16/portada/1366_2000.png",
+    "price": 10,
+    "stock": 0,
+    "onsale": false,
+    "owner_id": "68016f44eca030fa3c2c3eda",
+    "active": true
+  }
+]
