@@ -1,38 +1,38 @@
 import ProductDTO from "../dto/products.dto.js";
-import { createOneRepository, deleteOneRepository, readAllRepository, readOneRepository, updateRepository } from "../repositories/products.rep.js";
+import productsRepository from "../repositories/products.repository.js";
 
-const createOneService = async (product) => {
-    const { title, description, category, image, price, stock, onsale, owner_id } = product;
+class ProductsService {
+    createOneService = async (product) => {
+        const { title, description, category, image, price, stock, onsale, owner_id } = product;
 
-    if( !title || !description ) throw new Error("Title and description are required");
-    const data = new ProductDTO({title, description, category, image, price, stock, onsale, owner_id});
-    
-    const productCreated = await createOneRepository(data);
+        if( !title || !description ) throw new Error("Title and description are required");
+        // const data = new ProductDTO({title, description, category, image, price, stock, onsale, owner_id});
+        
+        const productCreated = await productsRepository.createOneRepository(product);
 
-    return productCreated;
+        return productCreated;
+    }
+
+    readAllService = async () => {
+        const products = await productsRepository.readAllRepository();
+        return products;
+    }
+
+    readOneService = async (pid) => {
+        const product = await productsRepository.readOneRepository(pid);
+        return product;
+    }
+
+    updateService = async (pid, product) => {
+        const productUpdated = await productsRepository.updateRepository(pid, product);
+        return productUpdated;
+    }
+
+    deleteOneService = async (pid) => {
+        const productDeleted = await productsRepository.deleteOneRepository(pid);
+        return productDeleted;
+    }
 }
 
-const readAllService = async () => {
-    console.log("readAllService");
-    const products = await readAllRepository();
-    return products;
-}
-
-const readOneService = async (pid) => {
-    const product = await readOneRepository(pid);
-    return product;
-}
-
-const updateService = async (pid, product) => {
-    const productUpdated = await updateRepository(pid, product);
-    return productUpdated;
-}
-
-const deleteOneService = async (pid) => {
-    const productDeleted = await deleteOneRepository(pid);
-    return productDeleted;
-}
-
-
-
-export { createOneService, readAllService, readOneService, updateService, deleteOneService };
+const productsService = new ProductsService();
+export default productsService;

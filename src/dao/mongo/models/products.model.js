@@ -46,7 +46,7 @@ const productSchema = new Schema({
 }, { timestamps: true });
 
 productSchema.pre("find", function () {
-    this.populate("owner_id", "first_name last_name email phone address")
+    this.populate("owner_id", "first_name last_name email")
 });
 
 const Product = model("products", productSchema);

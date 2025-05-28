@@ -4,7 +4,6 @@ const { PERSISTENCE } = process.env;
 
 let dao = {};
 
-console.log(`Persistence: ${PERSISTENCE}`);
 switch (PERSISTENCE) {
     case 'memory':
     break;
@@ -31,6 +30,4 @@ switch (PERSISTENCE) {
 
 }
 
-const { productsManager, usersManager, cartsManager } = dao;
-export { productsManager, usersManager, cartsManager };
-export default dao;
+export const { productsManager, usersManager, cartsManager } = dao;

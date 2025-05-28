@@ -1,15 +1,14 @@
 import { Types } from "mongoose";
-import { productsManager } from "../data/mongo/manager.mongo.js";
-import { createOneService, readAllService, readOneService, updateService, deleteOneService } from "../services/products.service.js";
+import productsService from "../services/products.service.js";
 
 const createOne = async (req, res) => {
     const { title, description, category, image, price, stock, onsale } = req.body;
-    const product = await createOneService({ title, description, category, image, price, stock, onsale, owner_id: req.user._id });
+    const product = await productsService.createOneService({ title, description, category, image, price, stock, onsale, owner_id: req.user._id });
     res.json201( product, "Product created successfully" );
 };
 
 const readAll = async (req, res) => {
-    const products = await readAllService();
+    const products = await productsService.readAllService();
     res.json200( products, "Products retrieved successfully" );
 };
 

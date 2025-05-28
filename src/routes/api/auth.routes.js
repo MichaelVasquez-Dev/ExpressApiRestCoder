@@ -1,11 +1,10 @@
-import { Router } from "express";
 import passport from "../../middlawares/passport.mid.js"
 import { failedRedirect, google, login, online, register, signout } from "../../controllers/auth.controller.js";
 import passportCB from "../../middlawares/passportCB.mid.js";
 import CustomRouter from "../custom.routes.js";
 import constants from "../../constants/constants.js";
 
-const router = Router();
+// const router = Router();
 
 // router.post("/register", passport.authenticate("register", { session: false, failureRedirect: '/api/auth/failedRedirect' }), register);
 // router.post("/login", passport.authenticate("login", { session: false, failureRedirect: '/api/auth/failedRedirect' }), login);
@@ -28,8 +27,8 @@ const router = Router();
 
 class AuthRouter extends CustomRouter{
     constructor(){
-        super()
-        this.init()
+        super();
+        this.init();
     }
 
     init = () => {

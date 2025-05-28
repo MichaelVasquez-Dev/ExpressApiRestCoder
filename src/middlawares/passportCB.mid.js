@@ -11,7 +11,6 @@ const passportCB = (strategy) => {
                 error.status = info.statusCode || 401;
                 return next(error);
             }
-            console.log("passportCB", user, info);
             req.user = user;
             next();
         })(req, res, next);

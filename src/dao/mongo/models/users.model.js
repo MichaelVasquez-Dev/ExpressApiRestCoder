@@ -35,6 +35,14 @@ const userSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    isVerify:{
+        type: Boolean,
+        default: false,
+    },
+    verifyCode:{
+        type: String,
+        default: "",
+    },
     active: {
         type: Boolean,
         default: true,

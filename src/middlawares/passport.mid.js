@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import { createHash, isValidPassword } from "../helpers/hash.helper.js";
-import { usersManager } from "../data/dao.factory.js";
+import { usersManager } from "../dao/factory.dao.js";
 import { createToken } from "../helpers/token.helper.js";
 import UserDTO from "../dto/users.dto.js";
 
@@ -13,16 +13,18 @@ passport.use("register", new LocalStrategy(
         usernameField: "email",
     }, 
     async (req, email, password, done) => {
-        const { first_name, last_name, date } = req.body;
+        const { first_name, last_name } = req.body;
 
         if (!first_name || !last_name || !date) return done(null, null, { message: "Faltan datos", statusCode: 400 });
         if (await usersManager.readBy({ email })) return done(null, null, { message: "El usuario ya existe", statusCode: 400 });
         
-        const user = { first_name, last_name, date, email, password };
-        const data = new UserDTO(user);
-        const newUser = await usersManager.create(data);
+        const newUser = new UserDTO( req.body );
+        const user = await usersManager.create( newUser );
+        
+        await sendEmailOfRegister(email, user.verifyCode);
+
         req.token = createToken({ _id: user._id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role });
-        done(null, newUser, null); 
+        done(null, user, null); 
     }
 ));
 

@@ -20,6 +20,8 @@ class UserDTO {
         this.role = user.role || "USER";
         this.avatar = user.avatar || "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png";
         this.isGoogleUser = user.isGoogleUser || false;
+        this.isVerify = user.isVerify || false;
+        this.verifyCode = crypto.randomBytes(12).toString('hex');
         this.active = user.active || true;
     
     }
