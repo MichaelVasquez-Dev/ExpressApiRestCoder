@@ -6,6 +6,7 @@ import { createHash, isValidPassword } from "../helpers/hash.helper.js";
 import { usersManager } from "../dao/factory.dao.js";
 import { createToken } from "../helpers/token.helper.js";
 import UserDTO from "../dto/users.dto.js";
+import sendEmailOfRegister from "../helpers/sendEmailOfRegister.helper.js";
 
 passport.use("register", new LocalStrategy(
     {
@@ -15,7 +16,7 @@ passport.use("register", new LocalStrategy(
     async (req, email, password, done) => {
         const { first_name, last_name } = req.body;
 
-        if (!first_name || !last_name || !date) return done(null, null, { message: "Faltan datos", statusCode: 400 });
+        if (!first_name || !last_name ) return done(null, null, { message: "Faltan datos", statusCode: 400 });
         if (await usersManager.readBy({ email })) return done(null, null, { message: "El usuario ya existe", statusCode: 400 });
         
         const newUser = new UserDTO( req.body );

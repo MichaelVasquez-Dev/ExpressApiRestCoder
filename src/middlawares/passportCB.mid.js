@@ -11,6 +11,7 @@ const passportCB = (strategy) => {
                 error.status = info.statusCode || 401;
                 return next(error);
             }
+            
             req.user = user;
             next();
         })(req, res, next);

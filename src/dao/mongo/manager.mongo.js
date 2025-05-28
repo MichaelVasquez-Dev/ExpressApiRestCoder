@@ -1,7 +1,6 @@
 import Product from "./models/products.model.js"
 import User from "./models/users.model.js"
 
-
 class Manager {
     constructor(model) {
         this.model = model
